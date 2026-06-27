@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>인생지도 | LifeMap</title>
+    <meta
+      name="description"
+      content="에릭슨의 발달 단계를 바탕으로 나를 이해하고 관계를 돌아보는 앱, 인생지도"
+    />
+    <style>
+      :root {
+        --bg-1: #fffaf5;
+        --bg-2: #f6eeff;
+        --panel: rgba(255, 255, 255, 0.92);
+        --text: #4b4463;
+        --muted: #746a89;
+        --line: #e6daf2;
+        --accent: #8f63d2;
+        --accent-deep: #6f4ab0;
+        --warm: #fff1db;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic",
+          sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, #fff4e6 0, transparent 28%),
+          radial-gradient(circle at bottom right, #efe3ff 0, transparent 26%),
+          linear-gradient(180deg, var(--bg-1), var(--bg-2));
+      }
+
+      .wrap {
+        width: min(1040px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 28px 0 72px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 24px;
+        align-items: center;
+        min-height: calc(100vh - 100px);
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 30px;
+        box-shadow: 0 18px 48px rgba(143, 99, 210, 0.12);
+      }
+
+      .intro {
+        padding: 44px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: #f4ebff;
+        color: var(--accent-deep);
+        font-size: 0.95rem;
+        font-weight: 700;
+      }
+
+      h1 {
+        margin: 20px 0 16px;
+        font-size: clamp(2.3rem, 5vw, 4.1rem);
+        line-height: 1.12;
+      }
+
+      .subtitle {
+        margin: 0 0 18px;
+        color: var(--accent-deep);
+        font-size: clamp(1.08rem, 2vw, 1.35rem);
+        font-weight: 800;
+      }
+
+      .desc {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.06rem;
+        line-height: 1.85;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 54px;
+        padding: 0 22px;
+        border-radius: 18px;
+        text-decoration: none;
+        font-weight: 800;
+        transition: transform 0.18s ease, box-shadow 0.18s ease;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+      }
+
+      .button-primary {
+        background: linear-gradient(135deg, #9b73de, #7c57c4);
+        color: #fff;
+        box-shadow: 0 12px 28px rgba(124, 87, 196, 0.26);
+      }
+
+      .button-secondary {
+        background: #fff;
+        color: var(--accent-deep);
+        border: 1px solid var(--line);
+      }
+
+      .visual {
+        padding: 30px;
+      }
+
+      .mock {
+        position: relative;
+        overflow: hidden;
+        min-height: 520px;
+        border-radius: 28px;
+        background:
+          radial-gradient(circle at 50% 20%, #ffe9bf 0, #ffe9bf 12%, transparent 28%),
+          radial-gradient(circle at 50% 60%, rgba(255, 255, 255, 0.8) 0, transparent 46%),
+          linear-gradient(180deg, #f8e8ff 0%, #eddcfe 54%, #e4d1fa 100%);
+        border: 1px solid #eadcf5;
+      }
+
+      .ring {
+        position: absolute;
+        left: 50%;
+        top: 44%;
+        width: 82%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        border: 14px solid rgba(145, 110, 210, 0.3);
+      }
+
+      .ring.r2 {
+        width: 66%;
+      }
+
+      .ring.r3 {
+        width: 50%;
+      }
+
+      .road {
+        position: absolute;
+        left: 50%;
+        bottom: -8%;
+        width: 42%;
+        height: 76%;
+        transform: translateX(-50%);
+        background: linear-gradient(180deg, #fff8ea, #ffeec7);
+        border-radius: 55% 55% 18% 18% / 45% 45% 12% 12%;
+        clip-path: polygon(
+          36% 0%,
+          56% 6%,
+          61% 16%,
+          55% 29%,
+          43% 39%,
+          38% 49%,
+          46% 59%,
+          59% 70%,
+          65% 82%,
+          61% 100%,
+          17% 100%,
+          20% 83%,
+          29% 68%,
+          39% 59%,
+          42% 49%,
+          35% 37%,
+          22% 27%,
+          17% 14%,
+          22% 5%
+        );
+        box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+      }
+
+      .glow {
+        position: absolute;
+        left: 50%;
+        top: 18%;
+        width: 110px;
+        height: 110px;
+        transform: translateX(-50%);
+        border-radius: 50%;
+        background: radial-gradient(circle, #fffdf3 0, #ffd777 40%, rgba(255, 215, 119, 0.12) 75%, transparent 100%);
+      }
+
+      .star {
+        position: absolute;
+        left: 50%;
+        top: 21%;
+        width: 38px;
+        height: 38px;
+        transform: translateX(-50%) rotate(45deg);
+        background: #fffef8;
+        clip-path: polygon(50% 0%, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0% 50%, 38% 38%);
+      }
+
+      .points {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .point {
+        padding: 18px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.82);
+        border: 1px solid #eadcf5;
+      }
+
+      .point strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--accent-deep);
+      }
+
+      footer {
+        margin-top: 28px;
+        padding: 22px 6px 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      footer a {
+        color: var(--accent-deep);
+        text-decoration: none;
+      }
+
+      @media (max-width: 860px) {
+        .hero {
+          grid-template-columns: 1fr;
+          min-height: auto;
+          padding-top: 10px;
+        }
+
+        .intro,
+        .visual {
+          padding: 26px;
+        }
+
+        .mock {
+          min-height: 420px;
+        }
+
+        .points {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <section class="hero">
+        <div class="card intro">
+          <div class="eyebrow">LifeMap</div>
+          <h1>인생지도</h1>
+          <p class="subtitle">나를 따라가다 보면 인생이 보입니다</p>
+          <p class="desc">
+            인생지도는 에릭슨의 발달 단계를 바탕으로 나의 성장 패턴을 돌아보고,
+            강점과 조심스러운 영역, 관계 속 감정의 흐름까지 천천히 살펴볼 수
+            있도록 돕는 자기이해 앱입니다.
+          </p>
+          <div class="actions">
+            <a
+              class="button button-primary"
+              href="https://play.google.com/store/apps/details?id=com.kjy519net.lifemap"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Google Play에서 보기</a
+            >
+            <a class="button button-secondary" href="privacy-policy.html"
+              >개인정보처리방침</a
+            >
+          </div>
+          <div class="points">
+            <div class="point">
+              <strong>성장지도 검사</strong>
+              에릭슨 8단계를 바탕으로 지금의 나를 점검합니다.
+            </div>
+            <div class="point">
+              <strong>결과와 기록</strong>
+              결과 코드, 성장 가이드, 이전 기록을 함께 볼 수 있습니다.
+            </div>
+            <div class="point">
+              <strong>관계 돌아보기</strong>
+              가까운 사람과의 관계 안에서 내가 어떻게 느끼는지 살펴봅니다.
+            </div>
+            <div class="point">
+              <strong>작은 실천</strong>
+              이번 주 성장 가이드를 기록하며 변화를 이어갈 수 있습니다.
+            </div>
+          </div>
+        </div>
+
+        <div class="card visual">
+          <div class="mock">
+            <div class="glow"></div>
+            <div class="star"></div>
+            <div class="ring"></div>
+            <div class="ring r2"></div>
+            <div class="ring r3"></div>
+            <div class="road"></div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        문의:
+        <a href="mailto:kjy519net@gmail.com">kjy519net@gmail.com</a>
+      </footer>
+    </div>
+  </body>
+</html>
