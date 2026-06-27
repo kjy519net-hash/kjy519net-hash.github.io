@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>인생지도 | LifeMap</title>
+    <title>김지열 | 앱 홈페이지</title>
     <meta
       name="description"
-      content="에릭슨의 발달 단계를 바탕으로 나를 이해하고 관계를 돌아보는 앱, 인생지도"
+      content="김지열의 앱과 개인정보처리방침을 한 곳에서 볼 수 있는 개발자 홈페이지"
     />
     <style>
       :root {
@@ -44,7 +44,7 @@
 
       .hero {
         display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
+        grid-template-columns: 1.08fr 0.92fr;
         gap: 24px;
         align-items: center;
         min-height: calc(100vh - 100px);
@@ -238,6 +238,54 @@
         color: var(--accent-deep);
       }
 
+      .apps {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .app-card {
+        padding: 20px;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.82);
+        border: 1px solid #eadcf5;
+      }
+
+      .app-card h3 {
+        margin: 0 0 8px;
+        font-size: 1.12rem;
+        color: var(--accent-deep);
+      }
+
+      .app-card p {
+        margin: 0 0 14px;
+        color: var(--muted);
+        font-size: 0.96rem;
+        line-height: 1.7;
+      }
+
+      .app-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .mini-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
+        padding: 0 14px;
+        border-radius: 14px;
+        text-decoration: none;
+        font-size: 0.92rem;
+        font-weight: 700;
+        background: #fff;
+        color: var(--accent-deep);
+        border: 1px solid var(--line);
+      }
+
       footer {
         margin-top: 28px;
         padding: 22px 6px 0;
@@ -269,6 +317,10 @@
         .points {
           grid-template-columns: 1fr;
         }
+
+        .apps {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
@@ -276,13 +328,14 @@
     <div class="wrap">
       <section class="hero">
         <div class="card intro">
-          <div class="eyebrow">LifeMap</div>
-          <h1>인생지도</h1>
-          <p class="subtitle">나를 따라가다 보면 인생이 보입니다</p>
+          <div class="eyebrow">KJY Apps</div>
+          <h1>김지열의 앱 홈페이지</h1>
+          <p class="subtitle">삶을 더 편리하게, 더 따뜻하게 돕는 앱들</p>
           <p class="desc">
-            인생지도는 에릭슨의 발달 단계를 바탕으로 나의 성장 패턴을 돌아보고,
-            강점과 조심스러운 영역, 관계 속 감정의 흐름까지 천천히 살펴볼 수
-            있도록 돕는 자기이해 앱입니다.
+            이곳은 김지열이 만든 앱과 각 앱의 개인정보처리방침을 한 곳에서
+            안내하는 개발자 홈페이지입니다. 현재는 자기이해 앱 인생지도를
+            포함해, 생활에 실제로 도움이 되는 앱들을 차근차근 확장해가고
+            있습니다.
           </p>
           <div class="actions">
             <a
@@ -290,28 +343,70 @@
               href="https://play.google.com/store/apps/details?id=com.kjy519net.lifemap"
               target="_blank"
               rel="noopener noreferrer"
-              >Google Play에서 보기</a
+              >인생지도 보러가기</a
             >
-            <a class="button button-secondary" href="privacy-policy.html"
-              >개인정보처리방침</a
+            <a class="button button-secondary" href="privacy-lifemap.html"
+              >인생지도 개인정보처리방침</a
             >
           </div>
           <div class="points">
             <div class="point">
-              <strong>성장지도 검사</strong>
-              에릭슨 8단계를 바탕으로 지금의 나를 점검합니다.
+              <strong>자기이해</strong>
+              나를 돌아보고 삶의 방향을 점검할 수 있는 앱을 만듭니다.
             </div>
             <div class="point">
-              <strong>결과와 기록</strong>
-              결과 코드, 성장 가이드, 이전 기록을 함께 볼 수 있습니다.
+              <strong>생활 편의</strong>
+              일상에서 실제로 자주 쓰이도록 간결하고 실용적인 흐름을 지향합니다.
             </div>
             <div class="point">
-              <strong>관계 돌아보기</strong>
-              가까운 사람과의 관계 안에서 내가 어떻게 느끼는지 살펴봅니다.
+              <strong>따뜻한 경험</strong>
+              사용자가 부담 없이 쓰고 오래 남기는 앱 경험을 중요하게 생각합니다.
             </div>
             <div class="point">
-              <strong>작은 실천</strong>
-              이번 주 성장 가이드를 기록하며 변화를 이어갈 수 있습니다.
+              <strong>지속적인 개선</strong>
+              실제 사용자 의견을 반영해 꾸준히 다듬고 업데이트합니다.
+            </div>
+          </div>
+
+          <div class="apps">
+            <div class="app-card">
+              <h3>인생지도</h3>
+              <p>
+                에릭슨의 발달 단계를 바탕으로 나의 성장 패턴과 관계의 흐름을
+                돌아보는 자기이해 앱입니다.
+              </p>
+              <div class="app-links">
+                <a
+                  class="mini-link"
+                  href="https://play.google.com/store/apps/details?id=com.kjy519net.lifemap"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Play 스토어</a
+                >
+                <a class="mini-link" href="privacy-lifemap.html">정책 보기</a>
+              </div>
+            </div>
+
+            <div class="app-card">
+              <h3>보이스 알람</h3>
+              <p>
+                음성과 알림을 활용해 일상 루틴을 더 편하게 돕는 생활 도우미 앱
+                시리즈입니다.
+              </p>
+              <div class="app-links">
+                <a class="mini-link" href="#">앱 추가 예정</a>
+              </div>
+            </div>
+
+            <div class="app-card">
+              <h3>16가지 감성유형</h3>
+              <p>
+                감정과 성향을 조금 더 부드럽게 이해할 수 있도록 돕는 공감형 앱
+                프로젝트입니다.
+              </p>
+              <div class="app-links">
+                <a class="mini-link" href="#">앱 추가 예정</a>
+              </div>
             </div>
           </div>
         </div>
@@ -329,7 +424,7 @@
       </section>
 
       <footer>
-        문의:
+        개발자 문의:
         <a href="mailto:kjy519net@gmail.com">kjy519net@gmail.com</a>
       </footer>
     </div>
